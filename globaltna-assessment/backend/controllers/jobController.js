@@ -1,6 +1,14 @@
 import JobRequest from "../models/JobRequest.js";
 
 const allowedStatuses = ["Open", "In Progress", "Closed"];
+const requiredJobFields = [
+  "title",
+  "description",
+  "category",
+  "location",
+  "contactName",
+  "contactEmail",
+];
 
 const createHttpError = (statusCode, message) => {
   const error = new Error(message);
@@ -45,10 +53,12 @@ export const getJobById = async (req, res, next) => {
 
 export const createJob = async (req, res, next) => {
   try {
-    const { title, description } = req.body;
+    const missingFields = requiredJobFields.filter(
+      (field) => !req.body[field]?.trim()
+    );
 
-    if (!title || !description) {
-      return next(createHttpError(400, "Title and description are required"));
+    if (missingFields.length > 0) {
+      return next(createHttpError(400, "All fields are required"));
     }
 
     const job = await JobRequest.create(req.body);

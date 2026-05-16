@@ -15,21 +15,25 @@ const jobRequestSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      required: true,
       trim: true,
     },
     location: {
       type: String,
+      required: true,
       trim: true,
     },
     contactName: {
       type: String,
+      required: true,
       trim: true,
     },
     contactEmail: {
       type: String,
+      required: true,
       trim: true,
       validate: {
-        validator: (email) => !email || validator.isEmail(email),
+        validator: (email) => validator.isEmail(email),
         message: "Please provide a valid email address",
       },
     },
