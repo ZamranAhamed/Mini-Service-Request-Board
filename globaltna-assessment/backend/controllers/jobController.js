@@ -16,10 +16,12 @@ const createHttpError = (statusCode, message) => {
   return error;
 };
 
+const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 export const getJobs = async (req, res, next) => {
   try {
     const filter = {};
-    const { category, status } = req.query;
+    const { category, status, search } = req.query;
 
     if (category) {
       filter.category = category;
@@ -27,6 +29,12 @@ export const getJobs = async (req, res, next) => {
 
     if (status) {
       filter.status = status;
+    }
+
+    if (search?.trim()) {
+      const searchRegex = { $regex: escapeRegex(search.trim()), $options: "i" };
+
+      filter.$or = [{ title: searchRegex }, { description: searchRegex }];
     }
 
     const jobs = await JobRequest.find(filter).sort({ createdAt: -1 });
