@@ -15,16 +15,16 @@ This project was developed as part of a **Software Engineer Internship Assessmen
 ## 📸 Application Screenshots
 
 ### Home Page
-![Day Home Page](./screenshots/day_home.png)
+![Day Home Page](./globaltna-assessment/screenshots/day_home.png)
 
 ### Home Page
-![Day Home Page](./screenshots/night_home.png)
+![Day Home Page](./globaltna-assessment/screenshots/night_home.png)
 
 ### Create Job Page
-![Create Job](./screenshots/create-job.png)
+![Create Job](./globaltna-assessment/screenshots/create-job.png)
 
 ### Job Details Page
-![Job Details](./screenshots/job-details.png)
+![Job Details](./globaltna-assessment/screenshots/job-details.png)
 
 ---
 
