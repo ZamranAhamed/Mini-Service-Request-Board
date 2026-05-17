@@ -15,12 +15,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "mini-service-request-board-frontend-chi.vercel.app",
+      "https://mini-service-request-board-frontend-chi.vercel.app",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
